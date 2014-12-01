@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Woocommerce Enforce Strong Password
-Version: 1.2
+Version: 1.2.0
 Plugin URI: 
 Description: Wordpress by default doesn't come with password check. This plugin allows woocommerce admin to set the password rules.
 Author: Bernard Peh
