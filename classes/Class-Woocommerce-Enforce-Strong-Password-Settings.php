@@ -100,6 +100,10 @@ class Woocommerce_Enforce_Strong_Password_Settings {
 		global $woocommerce;
 		// if it is new registration, use submitted password, else its profile update
 		$passwd = (!empty($_POST['register']) && $woocommerce->verify_nonce( 'register')) ? $_POST['password'] : $user->user_pass;
+		// in case people update profile without updating passwd
+		if (!$passwd) {
+			return;
+		}
 		$e = $this->is_password_strong($passwd);
 		if ($e != 'success') {
 			$errors->add('error', $e);

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=bpeh_car
 Tags: woocommerce, woothemes, e-store, eshop, ecommerce, e commerce, e-commerce, selling, strong password, enforce password, password
 Requires at least: 3.0.1
 Tested up to: 4.0.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ Yes, I wrote test to ensure that it works before releasing it. However I do know
 * Other security features that anyone can suggest... 
 
 == Changelog ==
+
+= 1.2.2 =
+* minor fix for users updating profile without updating passwd
 
 = 1.2.1 =
 * update readme
