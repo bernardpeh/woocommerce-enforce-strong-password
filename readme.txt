@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=bpeh_car
 Tags: woocommerce, woothemes, e-store, eshop, ecommerce, e commerce, e-commerce, selling, strong password, enforce password, password
 Requires at least: 3.0.1
 Tested up to: 4.0.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,6 @@ The manual installation method involves downloading the plugin and uploading it 
 
 2. Woocommerce error when the password check fails.
 
-
 = Plugin Settings =
 
 After activating the plugin, (in admin panel) go to woocommerce -> settings -> general and you should see the password options on that page.
@@ -66,6 +65,9 @@ Yes, I wrote test to ensure that it works before releasing it. However I do know
 * Other security features that anyone can suggest... 
 
 == Changelog ==
+
+= 1.2.1 =
+* update readme
 
 = 1.2.0 =
 * Update localisation
