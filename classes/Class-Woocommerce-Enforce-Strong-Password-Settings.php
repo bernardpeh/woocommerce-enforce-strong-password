@@ -141,29 +141,32 @@ class Woocommerce_Enforce_Strong_Password_Settings {
   		foreach ($res as $v) {
   			${$v->option_name} = $v->option_value;
   		}
-		$e = '';
+		$e = [];
 		if(isset($woocommerce_strong_password_options_min_char) && strlen($p) < $woocommerce_strong_password_options_min_char) {
-			$e = __("Sorry, your password must have a minimum of $woocommerce_strong_password_options_min_char characters", 'plugin_textdomain');
+			$e[] = __("must have a minimum of $woocommerce_strong_password_options_min_char characters", 'plugin_textdomain');
 		}
-		elseif(isset($woocommerce_strong_password_options_max_char) && strlen($p) > $woocommerce_strong_password_options_max_char) {
-			$e =__("Sorry, your password cannot exceed $woocommerce_strong_password_options_max_char characters.", 'plugin_textdomain');
+		if(isset($woocommerce_strong_password_options_max_char) && strlen($p) > $woocommerce_strong_password_options_max_char) {
+			$e[] =__("cannot exceed $woocommerce_strong_password_options_max_char characters", 'plugin_textdomain');
 		}	
-		elseif(isset($woocommerce_strong_password_options_min_1_number) && $woocommerce_strong_password_options_min_1_number == 'yes' && !preg_match("#[0-9]+#", $p)) {
-			$e = __('Sorry, your password must contain at least one NUMBER.', 'plugin_textdomain');
+		if(isset($woocommerce_strong_password_options_min_1_number) && $woocommerce_strong_password_options_min_1_number == 'yes' && !preg_match("#[0-9]+#", $p)) {
+			$e[] = __('must contain at least one NUMBER', 'plugin_textdomain');
 		}
-		elseif(isset($woocommerce_strong_password_options_min_1_lower_alphabet) && $woocommerce_strong_password_options_min_1_lower_alphabet == 'yes' && !preg_match("#[a-z]+#", $p)) {
-			$e = __('Sorry, your password must contain at least one LOWERCASE letter.', 'plugin_textdomain');
+		if(isset($woocommerce_strong_password_options_min_1_lower_alphabet) && $woocommerce_strong_password_options_min_1_lower_alphabet == 'yes' && !preg_match("#[a-z]+#", $p)) {
+			$e[] = __('must contain at least one LOWERCASE letter', 'plugin_textdomain');
 		}
-		elseif(isset($woocommerce_strong_password_options_min_1_upper_alphabet) && $woocommerce_strong_password_options_min_1_upper_alphabet == 'yes' && !preg_match("#[A-Z]+#", $p)) {
-			$e = __('Sorry, your password must contain at least one UPPERCASE letter.', 'plugin_textdomain');
+		if(isset($woocommerce_strong_password_options_min_1_upper_alphabet) && $woocommerce_strong_password_options_min_1_upper_alphabet == 'yes' && !preg_match("#[A-Z]+#", $p)) {
+			$e[] = __('must contain at least one UPPERCASE letter', 'plugin_textdomain');
 		}
-		elseif(isset($woocommerce_strong_password_options_min_1_special_char) && $woocommerce_strong_password_options_min_1_special_char == 'yes' && !preg_match("#[\W]+#", $p)) {
-			$e = __('Sorry, your password must contain at least one special character. For example, !@#$...', 'plugin_textdomain');
+		if(isset($woocommerce_strong_password_options_min_1_special_char) && $woocommerce_strong_password_options_min_1_special_char == 'yes' && !preg_match("#[\W]+#", $p)) {
+			$e[] = __('must contain at least one special character (For example, !@#$...)', 'plugin_textdomain');
 		}
-		else {
+      if (empty($e))
+		{
 			$e = 'success';
 		}
-		return $e;
+      else {
+         return __("We're sorry. Your password ", 'plugin_textdomain').implode(' and ',$e).".";
+      }
 	}
 	
 	function network_propagate($pfunction, $networkwide) {
